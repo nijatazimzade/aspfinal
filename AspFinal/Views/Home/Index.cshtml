@@ -1,0 +1,168 @@
+﻿@model HomeViewModel
+
+<header id="home" class="header slider-fade" data-scroll-index="0">
+    <div class="owl-carousel owl-theme">
+
+        @foreach (Banner item in Model.Banners)
+        {
+            <div class="text-left item bg-img" data-overlay-dark="3" style="background-color:@item.BgColor">
+                <div class="v-middle caption mt-30">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="o-hidden">
+                                    <h1>@item.Title</h1>
+                                    <p>
+                                        @item.Text
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</header>
+
+
+
+<section id="about" class="about section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="m-0"><b class="tedris">tədris</b><p style="font-size:40px">sahələri</p></h2>
+
+                <div class="py-3">
+                    <img src="/img/ca-line.png" style="width:104px" />
+                </div>
+                <p>İnformasiya Texnologiyaları sahəsində bugünün və gələcəyin ən tələb edilən istiqamətləri</p>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    @foreach (Field item in Model.Fields)
+                    {
+                        <div class="col-md-6 gallery-item">
+                            <div class="gallery-box">
+                                <div class="gallery-img" style="margin-top:40px">
+                                    <img src="/img/@item.Image" class="img-fluid mx-auto d-block" style="width:150px; display:flex!important; float:left"/>
+                                </div>
+                                <div>
+                                    <p><b>@item.Name</b></p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="about" class="about section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <h2 class="m-0"><p class="m-0" style="font-size:40px">niyə</p><b class="tedris">code academy?</b></h2>
+
+                    <div class="py-3">
+                        <img src="/img/ca-line.png" style="width:104px" />
+                    </div>
+                    <p class="fw-900">
+                        Biz dərsləri Zəmanətli Təhsil Sistemi ilə Beynəlxalq Sertifikasiya imtahanlarının kurrikulumu əsasında keçirik. Talant Mərkəzi, Mentor Sistemi kimi özəlliklər və müasir tədris metodları
+                        ilə onlara praktiki məşğələlər təklif edirik.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    @foreach (Feature item in Model.Features)
+                    {
+                        <div class="col-md-6 mt-5">
+                            <div class="row">
+                                <img class="col-md-6" src="/img/@item.Image" />
+                                <div class="col-md-6">
+                                    <h3><b>@item.Title</b></h3>
+                                    <p><b>@item.Text</b></p>
+                                    <a href="javascript:void(0)"><b>Ətraflı</b></a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="m-0" style="font-size:55px">sualın var?</p>
+                    </div>
+                    <div class="col-md-12 mb-4">
+                        <div class="d-flex">
+                            <h2 class="m-0"><b class="tedris">gəl <br /> görüşək!</b></h2>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="d-flex">
+                            <p class="m-0">
+                                Yüz dəfə eşitməkdənsə, bir dəfə görmək yaxşıdır. Bizimlə
+                                görüş təyin et, dərslərimiz, müəllimlərimiz və tədris prosesimizlə şəxsən tanış ol.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-12">
+                <form action="/contact/send" method="post" role="form" autocomplete="off">
+                    <div class="row">
+
+                        <div class="col-md-6 form-group">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Ad" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <input type="text" class="form-control" name="surname" id="subject" placeholder="Soyad" required>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-4 form-group">
+                            <select class="form-control">
+                                <option value="010">010</option>
+                                <option value="050">050</option>
+                                <option value="051" selected>051</option>
+                                <option value="055">055</option>
+                                <option value="060">060</option>
+                                <option value="070">070</option>
+                                <option value="077">077</option>
+                                <option value="099">099</option>
+                            </select>
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <input type="text" class="form-control" name="phonenumber" id="phonenumber" placeholder="XXX-XX-XX" required>
+                        </div>
+                    </div>
+                    <select class="col-md-12 form-group">
+                        @foreach (Field item in Model.Fields)
+                        {
+                            <option value="@item.Name">@item.Name</option>
+                        }
+                    </select>
+
+                    <button class="bg-warning col-md-12" type="submit">Müraciət et</button>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</section>

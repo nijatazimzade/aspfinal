@@ -1,0 +1,21 @@
+﻿@model Student
+<section id="about" class="about section-padding" style=" background-color: #33ca7f;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 animate-box" data-animate-effect="fadeInUp">
+                <div class="about-img">
+                    <div class="img"> <img src="/img/@Model.Image" class="img-fluid"></div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp" style=" padding: 50px 30px; ">
+                <h1 class="stud-page-title">@Model.FullName</h1>
+                <h4 class="stud-page-title my-4">CAP: @Model.CAP</h4>
+                <p class="stud-page-title">Qrup: @Model.Group.Name</p>
+                <p class="stud-page-title">Müəllim: @Model.Group.Teacher</p>
+                <p class="stud-page-title">Qrup Sahəsi: @Model.Group.Field.Name</p>
+                <p class="stud-page-title">Email: @Model.Email</p>
+                <p class="stud-page-title">Telefon: @Model.PhoneNumber</p>
+            </div>
+        </div>
+    </div>
+</section>

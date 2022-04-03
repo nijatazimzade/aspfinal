@@ -1,0 +1,55 @@
+﻿@model GroupsViewModel
+
+
+<section>
+    <div class="breadcrumbs">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">Groups</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="groups" style="background-color: #f4f5f8;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="d-flex justify-content-start mt-5">
+                        <a data-filter="all" class="filter mx-2 active">All</a>
+                        @foreach (Field item in Model.Fields)
+                        {
+                            <a data-filter="@item.Name.Replace(" ","")" class="filter mx-2">@item.Name</a>
+                        }
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        @foreach (Group item in Model.Groups)
+                        {
+                            <div class="group-wrapper col-md-4 mt-5 @item.Field.Name.Replace(" ","") all">
+                                <div class="card group-card" style="width: 18rem;">
+                                    <div class="d-flex justify-content-center mt-4">
+                                        <img src="/img/@item.Field.Image" class="group-card-img-top">
+                                    </div>
+                                    <div class="card-body">
+                                        <h3 class="card-title text-center">@item.Name</h3>
+                                        <p class="card-text text-center m-0">@item.Teacher</p>
+                                        <p class="card-text text-center m-0">Tələbə sayı: @item.StudCount</p>
+                                        <div class="d-flex justify-content-center mt-3">
+                                            <a href="/groups/info/@item.Id" class="more-btn btn btn-success">Ətraflı</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+

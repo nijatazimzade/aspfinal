@@ -1,0 +1,48 @@
+﻿@model Group
+<section class="breadcrumbs">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">@Model.Name</h1>
+                    <p class="page-title">Müəllim: @Model.Teacher</p>
+                    <p class="page-title">Tələbə sayı: @Model.StudCount</p>
+                    <p class="page-title">Qrup sahəsi: @Model.Field.Name</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="groups" style="background-color: #f4f5f8;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex justify-content-start mt-5">
+                    <h3>
+                        Tələbələr:
+                    </h3>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    @foreach (Student item in Model.Students)
+                    {
+                        <div class="stud-wrapper col-md-4 mt-5">
+                            <div class="card stud-card" style="width: 18rem;">
+                                <img src="/img/@item.Image" class="card-img-top">
+                                <div class="card-body">
+                                    <h3 class="card-title text-center">@item.FullName</h3>
+                                    <p class="card-text text-center m-0">@item.Email</p>
+                                    <div class="d-flex justify-content-center mt-3">
+                                        <a href="/students/info/@item.Id" class="more-btn btn btn-success">Ətraflı</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
