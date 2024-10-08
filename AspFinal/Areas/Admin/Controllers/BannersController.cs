@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace AspFinal.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Teacher")]
     public class BannersController : Controller
     {
         private readonly AppDbContext dbContext;

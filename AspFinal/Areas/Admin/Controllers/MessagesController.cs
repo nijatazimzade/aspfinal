@@ -12,7 +12,8 @@ using AspFinal.Models;
 namespace AspFinal.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Teacher")]
+
     public class MessagesController : Controller
     {
         private readonly AppDbContext _context;

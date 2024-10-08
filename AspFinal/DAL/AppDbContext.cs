@@ -21,6 +21,10 @@ namespace AspFinal.DAL
         public DbSet<Group> Groups { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Feature> Features { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Grade> Grades { get; set; }
+
+
 
 
 

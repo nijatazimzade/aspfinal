@@ -36,7 +36,7 @@ namespace AspFinal
                 options.Password.RequireLowercase = true;
                 options.Password.RequireDigit = true;
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
-                options.Lockout.MaxFailedAccessAttempts = 3;
+                //options.Lockout.MaxFailedAccessAttempts = 3;
             }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
             services.AddDbContext<AppDbContext>(options =>

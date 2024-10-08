@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "I8C/1Ji/B5lgJfqaGDjlkb6HoEr3f4X4Mw429uK1DxfISZQKqV6/RdCTTifcqfbVFYAR8SRkxWk6O5eo85NOgA==",
+  "dgSpecHash": "iXJGlPMmPUh4WSRrRrgxo+rpnyc83A6M84/eyMix6JHpqN58Xg50T3ZU94ThikknfqxIpHrSnprpV+ToKHpxlA==",
   "success": true,
-  "projectFilePath": "C:\\Nicat\\codeacademy\\backend\\AspFinal\\AspFinal\\AspFinal.csproj",
+  "projectFilePath": "C:\\nijatazimzade\\codeacademy\\backend\\AspFinal\\AspFinal\\AspFinal.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HP\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.15\\microsoft.aspnetcore.cryptography.internal.5.0.15.nupkg.sha512",

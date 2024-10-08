@@ -1,0 +1,32 @@
+﻿@model Student
+
+<h1>Create</h1>
+
+<h4>Group</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @foreach (Grade item in Model.Grades)
+        {
+            <div>
+                <p>@item.Value</p>
+            </div>
+        }
+    <form asp-action="AddGrade">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Grades" class="control-label"></label>
+            <input asp-for="Grades" class="form-control" />
+            <span asp-validation-for="Grades" class="text-danger"></span>
+        </div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </form>
+    </div>
+</div>
+@section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}

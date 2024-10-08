@@ -23,5 +23,7 @@ namespace AspFinal.Models
         public string Image { get; set; }
         [NotMapped]
         public IFormFile ImageFile { get; set; }
+        public List<Grade> Grades { get; set; }
+
     }
 }

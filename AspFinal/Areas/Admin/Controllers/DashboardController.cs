@@ -11,7 +11,8 @@ using AspFinal.DAL;
 namespace AspFinal.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles= "Admin")]
+    [Authorize(Roles = "Admin, Teacher")]
+
     public class DashboardController : Controller
     {
         private readonly AppDbContext dbContext;

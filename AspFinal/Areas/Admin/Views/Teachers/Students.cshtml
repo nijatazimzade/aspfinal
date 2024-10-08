@@ -1,0 +1,30 @@
+﻿@model List<Student>
+
+<h1>Create</h1>
+
+<h4>Group</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @foreach (Student item in Model)
+        {
+            <div class="stud-wrapper col-md-4 mt-5">
+                <div class="card stud-card" style="width: 18rem;">
+                    <img src="/img/@item.Image" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="card-title text-center">@item.FullName</h3>
+                        <p class="card-text text-center m-0">@item.Email</p>
+                        <div class="d-flex justify-content-center mt-3">
+                            <a asp-area="Admin" asp-controller="Teachers" asp-action="AddGrade" asp-route-id="@item.Id" class="more-btn btn btn-success">Ətraflı</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}

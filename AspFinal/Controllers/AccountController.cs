@@ -36,6 +36,7 @@ namespace AspFinal.Controllers
         public IActionResult AccessDenied()
         {
             return Content("No Access");
+
         }
 
         [HttpPost]
@@ -114,7 +115,7 @@ namespace AspFinal.Controllers
 
             if (rvm.Image != null)
             {
-                newUser.ProfilePhoto = await rvm.Image.Upload(env.WebRootPath, @"\img\users");
+                newUser.ProfilePhoto = await rvm.Image.Upload(env.WebRootPath, @"~\img");
             }
 
             IdentityResult identityResult = await userManager.CreateAsync(newUser, rvm.Password);
@@ -143,8 +144,11 @@ namespace AspFinal.Controllers
         }
         public async Task<IActionResult> InitRoles()
         {
-            await roleManager.CreateAsync(new IdentityRole("Admin"));
-            await roleManager.CreateAsync(new IdentityRole("Member"));
+            //await roleManager.CreateAsync(new IdentityRole("Admin"));
+            //await roleManager.CreateAsync(new IdentityRole("Member"));
+            await roleManager.CreateAsync(new IdentityRole("Teacher"));
+
+
             return RedirectToAction("Index", "Home");
 
         }

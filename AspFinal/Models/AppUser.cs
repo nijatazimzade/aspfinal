@@ -11,5 +11,6 @@ namespace AspFinal.Models
         public string FullName { get; set; }
         public string ProfilePhoto { get; set; }
         public bool IsActive { get; set; }
+
     }
 }
