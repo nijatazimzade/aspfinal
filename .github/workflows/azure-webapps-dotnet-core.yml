@@ -1,13 +1,13 @@
-name: Build and deploy ASP.Net Core app to an Azure Web App
+name: Build and Deploy ASP.Net Core App to Azure Web App
 
 env:
-  AZURE_WEBAPP_NAME: codeacademy  # Name of your Azure Web App
-  AZURE_WEBAPP_PACKAGE_PATH: '.'  # Path to your app's source code
-  DOTNET_VERSION: '8'             # .NET version, replace if necessary
+  AZURE_WEBAPP_NAME: codeacademy  # Change this to your Azure Web App name
+  AZURE_RESOURCE_GROUP: MyResourceGroup  # Replace with your actual resource group name
+  DOTNET_VERSION: '8'
 
 on:
   push:
-    branches: [ "master" ]  # Adjust branch if needed
+    branches: [ "master" ]
   workflow_dispatch:
 
 permissions:
@@ -19,61 +19,33 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Set up .NET Core
+      - name: Setup .NET Core
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Set up dependency caching for faster builds
-        uses: actions/cache@v3
-        with:
-          path: ~/.nuget/packages
-          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-nuget-
-      - name: Build with dotnet
-        run: dotnet build --configuration Release
+      - name: Restore dependencies
+        run: dotnet restore AspFinal/AspFinal.csproj
 
-      - name: dotnet publish
-        run: dotnet publish -c Release -o myapp
+      - name: Build project
+        run: dotnet build AspFinal/AspFinal.csproj --configuration Release --no-restore
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
-        with:
-          name: .net-app
-          path: myapp
+      - name: Publish project
+        run: dotnet publish AspFinal/AspFinal.csproj -c Release -o published-app
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    environment:
-      name: 'Development'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      - name: Zip the published app
+        run: zip -r app.zip published-app
 
-    steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v4
-        with:
-          name: .net-app
-
-      - name: Azure CLI login
-        uses: azure/cli@v1
-        with:
-          inlineScript: |
-            az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }} --allow-no-subscriptions
-
-      - name: Verify Azure Web App exists
+      - name: Deploy to Azure Web App
         run: |
-          az webapp show --name ${{ env.AZURE_WEBAPP_NAME }} --resource-group MyResourceGroup
+          az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} \
+            -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
 
-     - name: Deploy to Azure Web App
-        run: |
-          zip -r app.zip .
           az webapp deployment source config-zip \
-            --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
+            --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
             --name ${{ env.AZURE_WEBAPP_NAME }} \
             --src app.zip
