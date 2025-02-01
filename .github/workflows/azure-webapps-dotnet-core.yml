@@ -62,7 +62,8 @@ jobs:
         uses: azure/cli@v1
         with:
           inlineScript: |
-            az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
+            az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }} --subscription "417aa107-81d8-4729-a14b-0237bdbb9012"
+
       
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
