@@ -1,9 +1,9 @@
 name: Build and deploy ASP.Net Core app to an Azure Web App
 
 env:
-  AZURE_WEBAPP_NAME: GitHub-Azure-Deploy  # Replace with your Azure Web App name
-  AZURE_WEBAPP_PACKAGE_PATH: '.'    # Path to your app's source code
-  DOTNET_VERSION: '8'               # .NET version, replace if necessary
+  AZURE_WEBAPP_NAME: codeacademy  # Name of your Azure Web App
+  AZURE_WEBAPP_PACKAGE_PATH: '.'  # Path to your app's source code
+  DOTNET_VERSION: '8'             # .NET version, replace if necessary
 
 on:
   push:
@@ -32,7 +32,6 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
-
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
@@ -57,16 +56,21 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: .net-app
-          
+
       - name: Azure CLI login
         uses: azure/cli@v1
         with:
           inlineScript: |
             az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }} --allow-no-subscriptions
 
+      - name: Verify Azure Web App exists
+        run: |
+          az webapp show --name ${{ env.AZURE_WEBAPP_NAME }} --resource-group MyResourceGroup
+
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
