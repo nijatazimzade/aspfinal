@@ -12,6 +12,9 @@ on:
 
 permissions:
   contents: read
+  id-token: write
+  actions: write
+  packages: write
 
 jobs:
   build:
@@ -58,10 +61,12 @@ jobs:
           name: .net-app
 
       - name: Azure CLI login
-        uses: azure/cli@v1
-        with:
-          inlineScript: |
-            az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }} --allow-no-subscriptions
+        run: |
+          echo "${{ secrets.AZURE_CLIENT_ID }}" > client_id
+          echo "${{ secrets.AZURE_CLIENT_SECRET }}" > client_secret
+          echo "${{ secrets.AZURE_TENANT_ID }}" > tenant_id
+          az login --service-principal -u $(cat client_id) -p $(cat client_secret) --tenant $(cat tenant_id)
+          rm client_id client_secret tenant_id
 
       - name: Verify Azure Web App exists
         run: |
