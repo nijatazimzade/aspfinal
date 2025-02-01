@@ -40,10 +40,13 @@ jobs:
       with:
         name: webapp
         path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-    - name: Azure Login
-      uses: azure/login@v2
+
+    - name: Azure CLI login
+      uses: azure/cli@v1
       with:
-        creds: ${{ secrets.AspFinal20250201203427_SPN }}
+        inlineScript: |
+          az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }} --allow-no-subscriptions
+    
     - name: Deploy to Azure WebApp
       uses: azure/webapps-deploy@v2
       with:
