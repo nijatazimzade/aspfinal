@@ -1,3 +1,9 @@
 appsettings.json
 appsettings.Development.json
 launchSettings.json
+.vs/
+*.vsix
+*.user
+*.userosscache
+*.suo
+*.sln.docstates

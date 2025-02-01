@@ -372,9 +372,10 @@ C:\nijatazimzade\codeacademy\backend\AspFinal\AspFinal\obj\Debug\net5.0\Razor\Vi
 C:\nijatazimzade\codeacademy\backend\AspFinal\AspFinal\obj\Debug\net5.0\AspFinal.RazorTargetAssemblyInfo.cache
 C:\nijatazimzade\codeacademy\backend\AspFinal\AspFinal\obj\Debug\net5.0\AspFinal.RazorTargetAssemblyInfo.cs
 C:\nijatazimzade\codeacademy\backend\AspFinal\AspFinal\obj\Debug\net5.0\AspFinal.Views.pdb
-C:\nijatazimzade\codeacademy\backend\AspFinal\AspFinal\obj\Debug\net5.0\AspFinal.csproj.CopyComplete
 C:\nijatazimzade\codeacademy\backend\AspFinal\AspFinal\obj\Debug\net5.0\AspFinal.dll
 C:\nijatazimzade\codeacademy\backend\AspFinal\AspFinal\obj\Debug\net5.0\refint\AspFinal.dll
 C:\nijatazimzade\codeacademy\backend\AspFinal\AspFinal\obj\Debug\net5.0\AspFinal.pdb
 C:\nijatazimzade\codeacademy\backend\AspFinal\AspFinal\obj\Debug\net5.0\AspFinal.genruntimeconfig.cache
 C:\nijatazimzade\codeacademy\backend\AspFinal\AspFinal\obj\Debug\net5.0\ref\AspFinal.dll
+C:\nijatazimzade\codeacademy\backend\AspFinal\AspFinal\obj\Debug\net5.0\AspFinal.sourcelink.json
+C:\nijatazimzade\codeacademy\backend\AspFinal\AspFinal\obj\Debug\net5.0\AspFinal.csproj.Up2Date

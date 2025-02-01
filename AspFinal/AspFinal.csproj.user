@@ -13,5 +13,6 @@
     <WebStackScaffolding_DbContextTypeFullName>AspFinal.DAL.AppDbContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
+    <NameOfLastUsedPublishProfile>C:\nijatazimzade\codeacademy\backend\AspFinal\AspFinal\Properties\PublishProfiles\asp-final - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
